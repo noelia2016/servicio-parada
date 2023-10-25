@@ -18,6 +18,7 @@ public interface ParadaRepository extends JpaRepository<Parada, Long> {
 	@Query("SELECT p FROM Parada p WHERE p.nombre LIKE %:nombre%")
 	public Parada xNombre(String nombre);
 
-	@Query("SELECT NEW com.example.demo.dtos.EstudianteCarreraDTO(c , e, i, (i.fecha + i. antiguedad) as fech) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c WHERE i.esEgresado = 1")
+	// devuelve todas las paradas
+	@Query("SELECT p FROM Parada p ")
 	public List<ParadaResponse> getParadas();
 }

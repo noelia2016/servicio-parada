@@ -38,6 +38,15 @@ public class Parada {
 	}
 
 	// Getters y setters
+
+	public double getId() {
+		return id;
+	}
+
+	public void setId(Long valor) {
+		this.id = valor;
+	}
+
 	public double getLongitud() {
 		return longitud;
 	}
