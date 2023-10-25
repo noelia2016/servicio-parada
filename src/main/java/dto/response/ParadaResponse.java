@@ -2,21 +2,21 @@ package dto.response;
 
 import java.util.List;
 
-import ps.model.Tarifa;
+import ps.model.Parada;
 
 public class ParadaResponse {
 
-	private List<Parada> Paradas;
+	private List<Parada> paradas;
 
-	public TarifaResponse(List<Parada> Paradas) {
-		this.Paradas = Paradas;
+	public ParadaResponse(List<Parada> paradas) {
+		this.paradas = paradas;
 	}
 
-	public List<Tarifa> getTarifas() {
-		return Paradas;
+	public List<Parada> getParadas() {
+		return paradas;
 	}
 
-	public void setTarifas(List<Parada> Paradas) {
-		this.Paradas = Paradas;
+	public void setParadas(List<Parada> paradas) {
+		this.paradas = paradas;
 	}
 }

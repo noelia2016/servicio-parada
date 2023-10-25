@@ -1,5 +1,7 @@
 package ps.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,16 +13,25 @@ public class Parada {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column
+	private String nombre;
+
+	@Column
 	private double longitud;
+
+	@Column
 	private double latitud;
 
 	// Constructor vacío
 	public Parada() {
+		super();
 	}
 
 	// Constructor con todos los campos
-	public Parada(double lon, double lat) {
-		
+	public Parada(String name, double lon, double lat) {
+
+		this.nombre = name;
 		this.longitud = lon;
 		this.latitud = lat;
 
@@ -42,5 +53,16 @@ public class Parada {
 	public void setTLatitud(Long valor) {
 		this.latitud = valor;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	// para tener una referencia de nombre de la parada 
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	
 
 }
