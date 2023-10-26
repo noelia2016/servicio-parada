@@ -22,12 +22,14 @@ public class ApiService {
 		return this.rest_template.getForEntity(this.base_url, String.class);
 	}
 
-	public ResponseEntity<Parada> post(Parada Parada) {
-		return this.rest_template.postForEntity(this.base_url, Parada, Parada.class);
+	public ResponseEntity<Parada> post(Parada parada) {
+		return this.rest_template.postForEntity(this.base_url, parada, Parada.class);
 	}
 
 	public void delete(Long id) {
 		this.rest_template.delete(this.base_url + "/" + id);
 	}
+
+	
 
 }

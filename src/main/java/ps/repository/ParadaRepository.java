@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface ParadaRepository extends JpaRepository<Parada, Long> {
 
-	List<Parada> findByValorGreaterThan(double valor);
+	//List<Parada> findByValorGreaterThan(double valor);
 
 	// muestra una parada por nombre
 	@Query("SELECT p FROM Parada p WHERE p.nombre LIKE %:nombre%")
