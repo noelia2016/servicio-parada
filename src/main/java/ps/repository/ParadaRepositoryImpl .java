@@ -14,15 +14,7 @@ public final class ParadaRepositoryImpl implements ParadaRepository {
 
     @Override
     public List<Parada> getByLastName(String name) {
-        List<Parada> matchList = eList.stream().filter((e) -> (e.getLastName().contains(name)))
-                .collect(Collectors.toList());
-
-        return matchList;
-    }
-
-    @Override
-    public List<Parada> getByDepartment(String department) {
-        List<Parada> matchList = eList.stream().filter((e) -> (e.getDepartment().contains(department)))
+        List<Parada> matchList = eList.stream().filter((e) -> (e.getNombre().contains(name)))
                 .collect(Collectors.toList());
 
         return matchList;
