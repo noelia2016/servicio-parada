@@ -1,6 +1,6 @@
 public final class ParadaRepositoryImpl implements ParadaRepository {
 
-    private final CopyOnWriteArrayList<Parada> List = new ArrayList<Parada>();
+    private final CopyOnWriteArrayList<Parada> eList = new ArrayList<Parada>();
 
     public ParadaRepositoryImpl() {
         JsonbConfig config = new JsonbConfig().withFormatting(Boolean.TRUE);
