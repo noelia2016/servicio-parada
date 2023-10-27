@@ -50,7 +50,7 @@ public final class ParadaRepositoryImpl implements ParadaRepository {
         return nextParada;
     }
 
-    // se elimina una parada especificamente
+    // actualiza un objeto existente suprimiendo el objeto antiguo y creando un nuevo objeto con los nuevos datos. 
     @Override
     public Parada update(Parada updatedParada, String id) {
         deleteById(id);
@@ -58,6 +58,14 @@ public final class ParadaRepositoryImpl implements ParadaRepository {
         parada.getLongitud());
         eList.add(p);
         return p;
+    }
+
+    //El método sólo busca el ID de objetos y, a continuación, obtiene el índice del elemento de lista. El índice de lista se utiliza para suprimir el elemento de lista.
+    @Override
+    public void deleteById(String id) {
+        int matchIndex;
+        matchIndex = eList.stream().filter(e -> e.getId().equals(id)).findFirst().map(e -> eList.indexOf(e)).get();
+        eList.remove(matchIndex);
     }
 
 }
