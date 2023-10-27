@@ -18,7 +18,7 @@ import ps.repository.ParadaRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Paradas")
+@RequestMapping("/parada")
 public class ParadaController {
 	
 	@Autowired
@@ -39,7 +39,7 @@ public class ParadaController {
 
 	// Obtener todos los Paradas
 	@GetMapping
-	public ResponseEntity<Object> obtenerTodosLosParadaes() {
+	public ResponseEntity<Object> obtenerTodosLasParadas() {
 		try {
 			// TODO: Pasar al service.
 			ParadaResponse p = new ParadaResponse(ParadaRepository.findAll());

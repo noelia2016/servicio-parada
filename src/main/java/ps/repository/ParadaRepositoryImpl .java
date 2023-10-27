@@ -32,3 +32,32 @@ public final class ParadaRepositoryImpl implements ParadaRepository {
     public List<Parada> getAll() {
         return eList;
     }
+
+    // busca en la lista y devuelve null si no se encuentra ningún ID coincidente.
+    @Override
+    public Parada getById(String id) {
+        Parada parada;
+        parada = eList.stream().filter(e -> e.getId().equals(id)).findFirst().get();
+        return parada;
+    }
+
+    // guarda una nueva parada para los monopatines
+    @Override
+    public Parada save(Parada parada) {
+        Parada nextParada = Parada.of(null, parada.getNombre(), parada.getLatitud(),
+            parada.getLongitud()); 
+        eList.add(nextParada);
+        return nextParada;
+    }
+
+    // se elimina una parada especificamente
+    @Override
+    public Parada update(Parada updatedParada, String id) {
+        deleteById(id);
+        Parada p = Parada.of(id, parada.getNombre(), parada.getLatitud(),
+        parada.getLongitud());
+        eList.add(p);
+        return p;
+    }
+
+}

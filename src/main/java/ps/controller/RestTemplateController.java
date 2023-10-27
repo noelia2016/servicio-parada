@@ -26,8 +26,8 @@ public class RestTemplateController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Parada> post(@RequestBody Parada Parada) {
-		return this.api_service.post(Parada);
+	public ResponseEntity<Parada> post(@RequestBody Parada parada) {
+		return this.api_service.post(parada);
 	}
 
 	@DeleteMapping("/{id}")
