@@ -22,7 +22,7 @@ import java.util.List;
 public class ParadaController {
 	
 	@Autowired
-	private ParadaRepository ParadaRepository;
+	private ParadaRepository paradaRepository;
 
 	@Value("${variable_env}")
 	private String variable_env;
@@ -42,7 +42,7 @@ public class ParadaController {
 	public ResponseEntity<Object> obtenerTodosLasParadas() {
 		try {
 			// TODO: Pasar al service.
-			ParadaResponse p = new ParadaResponse(ParadaRepository.findAll());
+			ParadaResponse p = new ParadaResponse(paradaRepository.findAll());
 			// Algun llamado al service.
 			//throw new Exception("Este es un mensaje opcional");
 			return ResponseEntity.ok(p);
@@ -58,20 +58,28 @@ public class ParadaController {
 	// Crear un nuevo Parada
 	@PostMapping
 	public Parada crearParada(@RequestBody Parada parada) {
-		return ParadaRepository.save(parada);
+		return paradaRepository.save(parada);
 	}
 
 	// Actualizar un Parada existente por ID
 	@PutMapping("/{id}")
 	public Parada actualizarParada(@PathVariable Long id, @RequestBody Parada paradaAct) {
 		paradaAct.setId(id);
-		return ParadaRepository.save(paradaAct);
+		return paradaRepository.save(paradaAct);
 	}
 
 	// Eliminar un Parada por ID
 	@DeleteMapping("/{id}")
 	public void eliminarParada(@PathVariable Long id) {
-		ParadaRepository.deleteById(id);
+		paradaRepository.deleteById(id);
 	}
+
+	// busca paradas cercanas a un punto
+	@GetMapping("/{parada_cercanas}/{long}/{lat}")
+    public List<Parada> paradasCercanas(@PathVariable int longAct, @PathVariable int latAct){
+        
+		return List<Parada> p=paradaRepository.paradasCercanasApunto(longAct, latAct);
+        
+    }
 
 }

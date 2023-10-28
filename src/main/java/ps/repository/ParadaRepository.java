@@ -21,4 +21,8 @@ public interface ParadaRepository extends JpaRepository<Parada, Long> {
 	// devuelve todas las paradas
 	@Query("SELECT p FROM Parada p ")
 	public List<ParadaResponse> getParadas();
+
+	// devuelve todas las paradas cercanas que estan en una longitud
+	@Query("SELECT p FROM Parada p where p.longitud BETWEEN :lonAct :latAct or p.latitud BETWEEN :lonAct :latAct")
+	public List<ParadaResponse> paradasCercanasApunto(int longAct, int latAct);
 }
