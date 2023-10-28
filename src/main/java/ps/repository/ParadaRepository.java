@@ -7,30 +7,17 @@ import org.springframework.stereotype.Repository;
 
 import ps.model.Parada;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public interface ParadaRepository extends JpaRepository<Parada, Long> {
 
-	//List<Parada> findByValorGreaterThan(double valor);
-
-	public List<Parada> getAll();
-    public List<Parada> getByLastName(String lname);
-    public Employee save(Parada employee); // Add new parada
-    public Employee update(Parada updatedParada, String id);
-    public void deleteById(String id);
-    public Parada getById(String id);
-    public boolean isIdFound(String id);
-	
-	// muestra una parada por nombre
-	@Query("SELECT p FROM Parada p WHERE p.nombre LIKE %:nombre%")
-	public Parada xNombre(String nombre);
-
-	// devuelve todas las paradas
-	@Query("SELECT p FROM Parada p ")
-	public List<ParadaResponse> getParadas();
-
 	// devuelve todas las paradas cercanas que estan en una longitud
-	@Query("SELECT p FROM Parada p where p.longitud BETWEEN :lonAct :latAct or p.latitud BETWEEN :lonAct :latAct")
-	public List<ParadaResponse> paradasCercanasApunto(int longAct, int latAct);
+	/*@Query("SELECT p FROM Parada p where p.longitud BETWEEN :lonAct :latAct or p.latitud BETWEEN :lonAct :latAct")
+	public List<ParadaResponse> paradasCercanasApunto(int longAct, int latAct);*/
+
+	@Query("SELECT p FROM Parada p where  p.longitud = :lon and p.latitud =:lat")
+	public List<Parada> monopatinEstacionado(Double lon, Double lat);
+
 }

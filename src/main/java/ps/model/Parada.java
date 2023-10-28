@@ -18,10 +18,10 @@ public class Parada {
 	private String nombre;
 
 	@Column
-	private double longitud;
+	private Integer longitud;
 
 	@Column
-	private double latitud;
+	private Integer latitud;
 
 	// Constructor vacío
 	public Parada() {
@@ -29,7 +29,7 @@ public class Parada {
 	}
 
 	// Constructor con todos los campos
-	public Parada(String name, double lon, double lat) {
+	public Parada(String name, Integer lon, Integer lat) {
 
 		this.nombre = name;
 		this.longitud = lon;
@@ -51,7 +51,7 @@ public class Parada {
 		return longitud;
 	}
 
-	public void setTLongitud(Long valor) {
+	public void setTLongitud(Integer valor) {
 		this.longitud = valor;
 	}
 
@@ -59,7 +59,7 @@ public class Parada {
 		return latitud;
 	}
 
-	public void setTLatitud(Long valor) {
+	public void setTLatitud(Integer valor) {
 		this.latitud = valor;
 	}
 

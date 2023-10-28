@@ -15,10 +15,12 @@ import dto.requets.ErrorResponse;
 import dto.response.ParadaResponse;
 import ps.model.Parada;
 import ps.repository.ParadaRepository;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/parada")
+//@RequestMapping("/parada")
 public class ParadaController {
 	
 	@Autowired
@@ -38,8 +40,8 @@ public class ParadaController {
 	}
 
 	// Obtener todos los Paradas
-	@GetMapping
-	public ResponseEntity<Object> obtenerTodosLasParadas() {
+	@GetMapping("/paradas")
+	public ResponseEntity<Object> obtenerParadas() {
 		try {
 			// TODO: Pasar al service.
 			ParadaResponse p = new ParadaResponse(paradaRepository.findAll());
@@ -62,8 +64,9 @@ public class ParadaController {
 	}
 
 	// Actualizar un Parada existente por ID
-	@PutMapping("/{id}")
+	/*@PutMapping("/{id}")
 	public Parada actualizarParada(@PathVariable Long id, @RequestBody Parada paradaAct) {
+		// este toma los datos que estan en el body
 		paradaAct.setId(id);
 		return paradaRepository.save(paradaAct);
 	}
@@ -72,14 +75,30 @@ public class ParadaController {
 	@DeleteMapping("/{id}")
 	public void eliminarParada(@PathVariable Long id) {
 		paradaRepository.deleteById(id);
-	}
+	}*/
 
 	// busca paradas cercanas a un punto
-	@GetMapping("/{parada_cercanas}/{long}/{lat}")
+	/*@GetMapping("/parada_cercanas/{long}/{lat}")
     public List<Parada> paradasCercanas(@PathVariable int longAct, @PathVariable int latAct){
         
-		return List<Parada> p=paradaRepository.paradasCercanasApunto(longAct, latAct);
+		return paradaRepository.paradasCercanasApunto(longAct, latAct);
         
-    }
+    } */
+
+	// busco por longitud y latitud si un monopatin esta estacionado
+	@GetMapping("/estacionado/{lon}/{lat}")
+	public Boolean estaEstacionado(@PathVariable Double lon, @PathVariable Double lat) {
+
+		// busca si la posicion que mandan esta en una parada valida
+		List<Parada>  estacionado = paradaRepository.monopatinEstacionado(lon, lat);
+		System.out.println(estacionado);
+		// verifica si no hay datos
+        if (estacionado.size() == 0) {
+            return false;
+        }else{
+		// devuelve true si esta estacionado
+        	return true;
+		}
+	}
 
 }
