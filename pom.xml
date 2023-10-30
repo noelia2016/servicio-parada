@@ -46,6 +46,14 @@
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+<<<<<<< HEAD
+=======
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+>>>>>>> b7770aba8dbf28a3ff82a301262eb9a1c5cebbed
 	</dependencies>
 
 	<build>

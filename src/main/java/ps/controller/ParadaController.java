@@ -15,14 +15,16 @@ import dto.requets.ErrorResponse;
 import dto.response.ParadaResponse;
 import ps.model.Parada;
 import ps.repository.ParadaRepository;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/parada")
+//@RequestMapping("/parada")
 public class ParadaController {
 	
 	@Autowired
-	private ParadaRepository ParadaRepository;
+	private ParadaRepository paradaRepository;
 
 	@Value("${variable_env}")
 	private String variable_env;
@@ -38,11 +40,11 @@ public class ParadaController {
 	}
 
 	// Obtener todos los Paradas
-	@GetMapping
-	public ResponseEntity<Object> obtenerTodosLasParadas() {
+	@GetMapping("/paradas")
+	public ResponseEntity<Object> obtenerParadas() {
 		try {
 			// TODO: Pasar al service.
-			ParadaResponse p = new ParadaResponse(ParadaRepository.findAll());
+			ParadaResponse p = new ParadaResponse(paradaRepository.findAll());
 			// Algun llamado al service.
 			//throw new Exception("Este es un mensaje opcional");
 			return ResponseEntity.ok(p);
@@ -58,20 +60,45 @@ public class ParadaController {
 	// Crear un nuevo Parada
 	@PostMapping
 	public Parada crearParada(@RequestBody Parada parada) {
-		return ParadaRepository.save(parada);
+		return paradaRepository.save(parada);
 	}
 
 	// Actualizar un Parada existente por ID
-	@PutMapping("/{id}")
+	/*@PutMapping("/{id}")
 	public Parada actualizarParada(@PathVariable Long id, @RequestBody Parada paradaAct) {
+		// este toma los datos que estan en el body
 		paradaAct.setId(id);
-		return ParadaRepository.save(paradaAct);
+		return paradaRepository.save(paradaAct);
 	}
 
 	// Eliminar un Parada por ID
 	@DeleteMapping("/{id}")
 	public void eliminarParada(@PathVariable Long id) {
-		ParadaRepository.deleteById(id);
+		paradaRepository.deleteById(id);
+	}*/
+
+	// busca paradas cercanas a un punto
+	/*@GetMapping("/parada_cercanas/{long}/{lat}")
+    public List<Parada> paradasCercanas(@PathVariable int longAct, @PathVariable int latAct){
+        
+		return paradaRepository.paradasCercanasApunto(longAct, latAct);
+        
+    } */
+
+	// busco por longitud y latitud si un monopatin esta estacionado
+	@GetMapping("/estacionado/{lon}/{lat}")
+	public Boolean estaEstacionado(@PathVariable Double lon, @PathVariable Double lat) {
+
+		// busca si la posicion que mandan esta en una parada valida
+		List<Parada>  estacionado = paradaRepository.monopatinEstacionado(lon, lat);
+		System.out.println(estacionado);
+		// verifica si no hay datos
+        if (estacionado.size() == 0) {
+            return false;
+        }else{
+		// devuelve true si esta estacionado
+        	return true;
+		}
 	}
 
 }
