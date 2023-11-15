@@ -12,48 +12,26 @@
 	<groupId>ar.edu.cresta</groupId>
 	<artifactId>prueba</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Clase_spring</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Mongo DB y sprint</name>
+	<description>Proyecto de paradas con MongoDB para el servicio de monopatines</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.28</version> <!-- Utiliza la versión de MySQL que desees -->
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-boot-starter</artifactId>
-			<version>3.0.0</version>
-		</dependency>
-<<<<<<< HEAD
-=======
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.2.0</version>
-		</dependency>
->>>>>>> b7770aba8dbf28a3ff82a301262eb9a1c5cebbed
 	</dependencies>
 
 	<build>
