@@ -78,12 +78,11 @@ public class ParadaController {
 	}*/
 
 	// busca paradas cercanas a un punto
-	/*@GetMapping("/parada_cercanas/{long}/{lat}")
-    public List<Parada> paradasCercanas(@PathVariable int longAct, @PathVariable int latAct){
-        
-		return paradaRepository.paradasCercanasApunto(longAct, latAct);
-        
-    } */
+	@GetMapping("/parada_cercanas/{longAct}/{latAct}")
+    public List<Parada> paradasCercanas(@PathVariable Double longAct, @PathVariable Double latAct){
+        Double radio = 400.0;
+		return paradaRepository.paradasCercanasApunto(longAct, latAct, radio);
+    } 
 
 	// busco por longitud y latitud si un monopatin esta estacionado
 	@GetMapping("/estacionado/{lon}/{lat}")
