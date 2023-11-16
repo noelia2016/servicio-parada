@@ -19,14 +19,4 @@ class ClaseSpringApplicationTests {
 	void contextLoads() {
 	}
 
-	@Test
-	void testParada() throws Exception {
-
-		HttpEntity<String> entity = new HttpEntity<Parada>(null, headers);
-		ResponseEntity<Parada> response = restTemplate.exchange(
-				createURLWithPort("/paradas"), HttpMethod.POST, entity, String.class);
-		String actual = response.getHeaders().get(HttpHeaders.LOCATION).get(0);
-		assertTrue(actual.contains("/paradas"));
-	}
-
 }

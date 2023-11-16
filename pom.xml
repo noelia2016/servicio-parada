@@ -41,21 +41,13 @@
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-
+		
 		<!-- DOCUMENTACION -->
->>>>>>> e66117d713300a53261f554ab82efed67bf339c2
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.2.0</version>
 		</dependency>
-<<<<<<< HEAD
->>>>>>> b7770aba8dbf28a3ff82a301262eb9a1c5cebbed
-=======
 
 		<!-- SEGURIDAD -->
 		<dependency>
@@ -80,8 +72,6 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
->>>>>>> e66117d713300a53261f554ab82efed67bf339c2
 	</dependencies>
 
 	<build>

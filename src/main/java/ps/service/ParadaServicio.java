@@ -1,5 +1,7 @@
 package ps.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,14 @@ public class ParadaServicio {
     @GetMapping
     public ResponseEntity<String> dameParadas() {
         return rest.getForEntity(paradaURL + "/parada", String.class);
+    }
+
+    public Book findById(Long id) {
+
+        log.info("Get parada by id {} ", id);
+
+        return paradaRepository.findById(id).orElseThrow();
+
     }
 
 }

@@ -1,14 +1,28 @@
 import java.util.Optional;
 
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.util.MimeTypeUtils;
+
 import ps.controller.ParadaController;
 import ps.model.Parada;
+import ps.repository.ParadaRepository;
 import ps.service.ParadaServicio;
 
 @WebMvcTest(ParadaController.class)
 public class ParadaControlerTest {
 
   @Autowired
-  private MockMvc mockMvc;
+  private MockBean mockMvc;
 
   @MockBean
   private ParadaServicio service;
@@ -16,9 +30,16 @@ public class ParadaControlerTest {
   @Autowired
   private ObjectMapper objectMapper;
 
+  @Value("${nombre}")
+  String nombre;
+
+  /**
+   * @throws Exception
+   */
   @Test
   public void givenParada_whenGetParadaById_thenReturnParada()
       throws Exception {
+
     Parada book = createParada();
     given(service.findById(1L)).willReturn(book);
     var findById = mockMvc.perform(
@@ -35,9 +56,9 @@ public class ParadaControlerTest {
   @Test
   public void testRetrieveParadaWithMockRepository() throws Exception {
 
-    Optional<Parada> optStudent = Optional.of(createBook());
-    when(paradaRepository.findById(1L)).thenReturn(optStudent);
-    assert paradaService.findById(1L).getNombre().contains("Numancia");
+    Optional<Parada> optStudent = Optional.of(createParada());
+    when(ParadaRepository.findById(1L)).thenReturn(optStudent);
+    assert service.findById(1L).getNombre().contains("Numancia");
 
   }
 
@@ -46,7 +67,7 @@ public class ParadaControlerTest {
 
     Parada parada = new Parada();
     parada.setId(12);
-    parada.seNombre("Cerrito chico");
+    parada.setNombre(nombre);
     parada.setLongitud(34);
     parada.setLatitud(64);
     return parada;

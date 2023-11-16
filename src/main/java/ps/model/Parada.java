@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Parada {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -42,15 +42,15 @@ public class Parada {
 		return id;
 	}
 
-	public void setId(Long valor) {
-		this.id = valor;
+	public void setId(int i) {
+		this.id = i;
 	}
 
 	public double getLongitud() {
 		return longitud;
 	}
 
-	public void setTLongitud(Integer valor) {
+	public void setLongitud(Integer valor) {
 		this.longitud = valor;
 	}
 
@@ -58,7 +58,7 @@ public class Parada {
 		return latitud;
 	}
 
-	public void setTLatitud(Integer valor) {
+	public void setLatitud(Integer valor) {
 		this.latitud = valor;
 	}
 
@@ -66,11 +66,9 @@ public class Parada {
 		return nombre;
 	}
 
-	// para tener una referencia de nombre de la parada 
+	// para tener una referencia de nombre de la parada
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	
 
 }

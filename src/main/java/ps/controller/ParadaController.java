@@ -46,8 +46,15 @@ public class ParadaController {
 		return "Un mensaje de texto.";
 	}
 
+	@GetMapping("/parada/{id}")
+	public ResponseEntity<Parada> getParadaById(@PathVariable Long id) {
+
+		return ResponseEntity.ok(paradaService.findById(id));
+	}
+
 	// Obtener todos los Paradas
 	@GetMapping("/paradas")
+	@Operation(summary = "Lista las paradas existentes", description = "Lista de paradas para estacionar Monopatines")
 	public ResponseEntity<Object> obtenerParadas(@RequestHeader("Authorization") String authorization) {
 
 		try {
@@ -101,12 +108,12 @@ public class ParadaController {
 	public void eliminarParada(@Parameter(description = "El Id de la parada", example = "123") @PathVariable Long id,
 			@RequestHeader("Authorization") String authorization) {
 
-			if (token.autorizado(authorization).contains("ADMIN")) {
-				Parada paradaAct;
-				// este toma los datos que estan en el body
-				paradaAct.setId(id);
-				paradaRepository.deleteById(id);
-			}
+		if (token.autorizado(authorization).contains("ADMIN")) {
+			Parada paradaAct;
+			// este toma los datos que estan en el body
+			paradaAct.setId(id);
+			paradaRepository.deleteById(id);
+		}
 	}
 
 	// busca paradas cercanas a un punto
@@ -125,7 +132,7 @@ public class ParadaController {
 		if (token.autorizado(authorization) == null)
 			return Collections.emptyList();
 
-		/* si esta todo bien retorno las paradas cercanas al punto de partida */ 
+		/* si esta todo bien retorno las paradas cercanas al punto de partida */
 		Double radio = 400.0;
 		return paradaRepository.paradasCercanasApunto(longAct, latAct, radio);
 	}
