@@ -11,7 +11,7 @@ import ps.model.ParadaM;
 import com.mongodb.client.result.UpdateResult;
 
 @Component
-public class CustomParadaRepositoryImpl implements CustomParadaRepository {
+public class CustomParadaRepositoryImpl implements ParadaRepositoryM {
 
 	@Autowired
 	MongoTemplate mongoTemplate;
