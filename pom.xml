@@ -6,11 +6,11 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.3</version>
+		<version>3.1.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ar.edu.cresta</groupId>
-	<artifactId>prueba</artifactId>
+	<artifactId>Noe</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Clase_spring</name>
 	<description>Demo project for Spring Boot</description>
@@ -32,11 +32,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.28</version> <!-- Utiliza la versión de MySQL que desees -->
@@ -47,13 +42,46 @@
 			<version>3.0.0</version>
 		</dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+		<!-- DOCUMENTACION -->
+>>>>>>> e66117d713300a53261f554ab82efed67bf339c2
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.2.0</version>
 		</dependency>
+<<<<<<< HEAD
 >>>>>>> b7770aba8dbf28a3ff82a301262eb9a1c5cebbed
+=======
+
+		<!-- SEGURIDAD -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>2.7.8</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
+		<!-- TEST -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+>>>>>>> e66117d713300a53261f554ab82efed67bf339c2
 	</dependencies>
 
 	<build>
