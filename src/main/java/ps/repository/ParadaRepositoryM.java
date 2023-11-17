@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import ps.model.Parada;
 import ps.model.ParadaM;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -38,6 +37,6 @@ public interface ParadaRepositoryM extends MongoRepository<ParadaM, Long> {
 	// @Query("SELECT p FROM Parada p where p.longitud = :lon and p.latitud =:lat");
 	public List<Parada> monopatinEstacionado(Double lon, Double lat){
 		@Query("value=longitud:'?lon'","value=latitud:lat")
-		List<Parada> findAll(Double lon , Double lat);
+		return  List<GroceryItem> list = paradaRepository.findAll(Double lon , Double lat);
 	}
 }

@@ -2,10 +2,20 @@ package ps.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("ParadaM")
+// Annotations
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Document(collection = "ParadaM")
 public class ParadaM {
 
+	// atributos para mis documentos
 	@Id
 	private String id;
 
@@ -25,36 +35,38 @@ public class ParadaM {
 		this.latitud = lat;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String name) {
-		this.nombre = name;
-	}
-
-	public int getLongitud() {
-		return longitud;
-	}
-
-	public void setLongitud(int lon) {
-		this.longitud = lon;
-	}
-
-	public String getLatitud() {
-		return latitud;
-	}
-
-	public void setLatitud(int lat) {
-		this.latitud = lat;
-	}
+	/*
+	 * public String getId() {
+	 * return id;
+	 * }
+	 * 
+	 * public void setId(String id) {
+	 * this.id = id;
+	 * }
+	 * 
+	 * public String getNombre() {
+	 * return nombre;
+	 * }
+	 * 
+	 * public void setNombre(String name) {
+	 * this.nombre = name;
+	 * }
+	 * 
+	 * public int getLongitud() {
+	 * return longitud;
+	 * }
+	 * 
+	 * public void setLongitud(int lon) {
+	 * this.longitud = lon;
+	 * }
+	 * 
+	 * public String getLatitud() {
+	 * return latitud;
+	 * }
+	 * 
+	 * public void setLatitud(int lat) {
+	 * this.latitud = lat;
+	 * }
+	 */
 
 }
