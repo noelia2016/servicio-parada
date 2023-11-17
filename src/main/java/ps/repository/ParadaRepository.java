@@ -21,7 +21,7 @@ public interface ParadaRepository extends JpaRepository<Parada, Long> {
 	@Query("SELECT p FROM Parada p where  p.longitud = :lon and p.latitud =:lat")
 	public List<Parada> monopatinEstacionado(Double lon, Double lat);
 
-	@Query("SELECT new dto.ParadaDTO (p.nombre, p.longitud, p.latitud) FROM Parada p)")
+	@Query("SELECT new dto.ParadaDTO (p.nombre, p.longitud, p.latitud) FROM Parada p")
 	public List<ParadaDTO> obtenerParadasDTO();
 
 	Optional<Parada> findById(Long id);

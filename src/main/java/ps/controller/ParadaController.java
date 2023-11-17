@@ -24,33 +24,34 @@ import java.util.Collections;
 // @RequestMapping("/parada")
 public class ParadaController {
 
-	private final ParadaRepository paradaRepository;
+	@Autowired
+	private ParadaRepository paradaRepository;
 
 	@Autowired
 	private TokenServicio token;
 
-	@Value("${variable_env}")
-	private String variable_env;
+//	@Value("${variable_env}")
+//	private String variable_env;
 
-	ParadaController(ParadaRepository paradaRepository) {
-		this.paradaRepository = paradaRepository;
-	}
+//	ParadaController(ParadaRepository paradaRepository) {
+//		this.paradaRepository = paradaRepository;
+//	}
 
-	@GetMapping("/variable_env")
-	public String obtener_variable_env() {
-		return variable_env;
-	}
+//	@GetMapping("/variable_env")
+//	public String obtener_variable_env() {
+//		return variable_env;
+//	}
 
 	@GetMapping("/string")
 	public String obtener_string_hardcodeado() {
 		return "Un mensaje de texto.";
 	}
 
-	@GetMapping("/parada/{id}")
-	public ResponseEntity<Parada> getParadaById(@PathVariable Long id) {
-
-		return ResponseEntity.ok(paradaService.findById(id));
-	}
+//	@GetMapping("/parada/{id}")
+//	public ResponseEntity<Parada> getParadaById(@PathVariable Long id) {
+//
+//		return ResponseEntity.ok(paradaService.findById(id));
+//	}
 
 	// Obtener todos los Paradas
 	@GetMapping("/paradas")
@@ -103,18 +104,18 @@ public class ParadaController {
 	}
 
 	// Eliminar un Parada por ID
-	@DeleteMapping("/{id}")
-	@Operation(summary = "Se elimina una parada", description = "Se da de baja una parada especifica indicando el id")
-	public void eliminarParada(@Parameter(description = "El Id de la parada", example = "123") @PathVariable Long id,
-			@RequestHeader("Authorization") String authorization) {
-
-		if (token.autorizado(authorization).contains("ADMIN")) {
-			Parada paradaAct;
-			// este toma los datos que estan en el body
-			paradaAct.setId(id);
-			paradaRepository.deleteById(id);
-		}
-	}
+//	@DeleteMapping("/{id}")
+//	@Operation(summary = "Se elimina una parada", description = "Se da de baja una parada especifica indicando el id")
+//	public void eliminarParada(@Parameter(description = "El Id de la parada", example = "123") @PathVariable Long id,
+//			@RequestHeader("Authorization") String authorization) {
+//
+//		if (token.autorizado(authorization).contains("ADMIN")) {
+//			Parada paradaAct;
+//			// este toma los datos que estan en el body
+//			paradaAct.setId(id);
+//			paradaRepository.deleteById(id);
+//		}
+//	}
 
 	// busca paradas cercanas a un punto
 	/**

@@ -14,8 +14,8 @@ import ps.repository.ParadaRepository;
 public class ParadaService {
 
     // private final String direccion = "http://localhost:8093/parada";
-    @Value("${paradaURL}")
-    public String paradaURL;
+//    @Value("${paradaURL}")
+//    public String paradaURL;
 
     private ParadaRepository paradaRepository;
 
