@@ -5,8 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "Parada")
 public class Parada {
 
 	@Id
@@ -38,11 +40,11 @@ public class Parada {
 
 	// Getters y setters
 
-	public double getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int i) {
+	public void setId(Long i) {
 		this.id = i;
 	}
 

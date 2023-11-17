@@ -1,44 +1,41 @@
-import ar.edu.cresta.dto.ParadaDTO;
-import ar.edu.cresta.model.Parada;
-import ar.edu.cresta.repository.ParadaRepository;
-import ar.edu.cresta.service.ParadaService;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import dto.ParadaDTO;
+import ps.model.Parada;
+import ps.repository.ParadaRepository;
+import ps.service.ParadaService;
 
 /* 
  	Prueba Unitaria:
-	Una prueba unitaria verifica el comportamiento de una unidad aislada de código, 
-	como un método o una función, sin depender de otras partes del sistema.
-	Se utiliza Mockito para simular el comportamiento de las dependencias y 
-	se enfoca en probar la lógica interna de la unidad bajo prueba.
+	Una prueba unitaria verifica el comportamiento de una unidad aislada de código, como un método o una función, sin depender de otras partes del sistema.
+	Se utiliza Mockito para simular el comportamiento de las dependencias y se enfoca en probar la lógica interna de la unidad bajo prueba.
 
 	Prueba de Integración:
 	Una prueba de integración evalúa la interacción entre múltiples componentes del sistema.
-	Se utiliza un entorno más realista, como una base de datos en memoria, 
-	para verificar que los componentes interactúen correctamente. 
-	En este contexto, Spring Boot y la anotación @DataJpaTest se utilizan para 
-	configurar un entorno de prueba de integración con una base de datos real. 
+	Se utiliza un entorno más realista, como una base de datos en memoria, para verificar que los componentes interactúen correctamente. 
+	En este contexto, Spring Boot y la anotación @DataJpaTest se utilizan para configurar un entorno de prueba de integración con una base de datos real. 
 	La prueba garantiza que el sistema funcione de manera cohesiva en conjunto. 
 */
 
 public class ParadaPruebaUnidadTest {
 
-	/* NO SE GRABA EN BD */
+	/* NO SE GRABA EN BD SOLAMENTE PRUEBA SI ANDA EL METODO A TESTEAR */
 
-	@Mock // Clase simulada
+	@Mock // Clase que simulada ser una parada
 	private ParadaRepository ParadaRepository;
 
 	@InjectMocks // Clase donde se inyectara el mock
 	private ParadaService ParadaService;
 
 	// Inicializa todo
-	public ParadaServiceUnidadTest() {
+	public void ParadaServiceUnidadTest() {
 		MockitoAnnotations.openMocks(this);
 	}
 
@@ -51,14 +48,16 @@ public class ParadaPruebaUnidadTest {
 		 * comportamiento simulado del método save del repositorio
 		 * (ParadaRepository).
 		 * 
-		 * La parte Mockito.any(Parada.class, porq save espera Parada) indica
-		 * que la simulación se activará cuando se llame al método save con cualquier
+		 * La parte Mockito.any(Parada.class, porq save espera Parada) indica que la
+		 * simulación se activará cuando se llame al método save con cualquier
 		 * instancia de la clase Parada.
 		 * 
-		 * La parte .thenReturn(...)) indica que, cuando se llame al método save con cualquier
-		 * instancia de Parada, Mockito devolverá una instancia específica de
+		 * La parte .thenReturn(...)) indica que, cuando se llame al método save con
+		 * cualquier instancia de Parada, Mockito devolverá una instancia específica de
 		 * Parada creada con los valores proporcionados .
 		 */
+
+		// Se crea la parada para poder probar el metodo
 		ParadaDTO parDTO = new ParadaDTO("Parada1", 23456, 2345);
 		when(ParadaRepository.save(Mockito.any(Parada.class)))
 				.thenReturn(new Parada("Parada1", 23456, 2345));
@@ -66,12 +65,7 @@ public class ParadaPruebaUnidadTest {
 		// Llamar al método del servicio y verificar el resultado
 		Parada parEnBase = ParadaService.guardarParada(parDTO);
 
-		// Verificar que el método del repositorio se llamó una vez y con los parámetros
-		// correctos
-		// Mockito.verify(ParadaRepository,
-		// Mockito.times(1)).save(Mockito.any(Parada.class));
-
-		// Verificar que los datos del club guardado coinciden con los datos
+		// Verificar que los datos de la parada guardada coinciden con los datos
 		// proporcionados en el DTO
 		assertEquals("Parada1", parEnBase.getNombre());
 		assertEquals(23456, parEnBase.getLongitud());

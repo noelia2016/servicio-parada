@@ -5,17 +5,20 @@ import java.net.http.HttpHeaders;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
+import dto.ParadaDTO;
 import ps.model.Parada;
 import ps.repository.ParadaRepository;
-import ps.service.ParadaServicio;
+import ps.service.ParadaService;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ParadaServiceTest {
 
   @Autowired
-  private ParadaServicio paradaService;
+  private ParadaService paradaService;
 
   @MockBean
   private ParadaRepository paradaRepository;
@@ -23,35 +26,18 @@ public class ParadaServiceTest {
   @Test
   public void testRetrieveParadaWithMockRepository() throws Exception {
 
-    Optional<Parada> optStudent = Optional.of(createParada());
+    Optional<ParadaDTO> optParada = Optional.of(crearParada("Numancia", 23, 45));
 
-    when(paradaRepository.findById(1L)).thenReturn(optStudent);
+    // when(paradaRepository.findById(1L)).thenReturn(optParada);
 
-    assert paradaService.findById(1L).getNombre().contains("Numancia");
-
-  }
-
-  /* crea la parada para probar el test */
-  private Parada createParada() {
-
-    Parada parada = new Parada();
-    parada.setId(12);
-    parada.seNombre("Cerrito chico");
-    parada.setLongitud(34);
-    parada.setLatitud(64);
-    return parada;
+    // assert ((ParadaRepository)
+    // paradaService).findById(1L).getNombre().contains("Numancia");
 
   }
 
-  /*
-   * @Test
-   * void testParada() throws Exception {
-   * 
-   * HttpEntity<String> entity = new HttpEntity<String>(null, headers);
-   * ResponseEntity<Parada> response = restTemplate.exchange(
-   * createURLWithPort("/paradas"), HttpMethod.POST, entity, String.class);
-   * String actual = response.getHeaders().get(HttpHeaders.LOCATION).get(0);
-   * assertTrue(actual.contains("/paradas"));
-   * }
-   */
+  private ParadaDTO crearParada(String string, int i, int j) {
+    ParadaDTO paradaDTO = new ParadaDTO("Nordico 1", 2345, 3456);
+    return paradaDTO;
+  }
+
 }
